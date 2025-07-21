@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 return new class extends Migration
 {
@@ -12,11 +14,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->id('id_user');
+            $table->string('name', 80);
+            $table->string('username', 80)->unique();
             $table->string('password');
+            $table->foreignId('ref_id_role', 5)->references('id_role')->on('roles')->onDelete('cascade');
+            // $table->string('email', 80)->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -35,6 +39,14 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        User::create([
+            'name' => 'ROOT',
+            'username' => 'admin-service',
+            'password' => Hash::make('1234'),
+            'ref_id_role' => 1,
+        ]);
+
     }
 
     /**
@@ -42,6 +54,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropForeign('ref_id_role')->foreign('ref_id_role')->references('id_role')->on('roles');
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
