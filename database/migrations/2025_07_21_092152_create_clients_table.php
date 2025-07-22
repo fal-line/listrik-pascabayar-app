@@ -12,7 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('clients', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_pelanggan');
+            $table->string('username');
+            $table->string('password');
+            $table->string('nomor_kwh');
+            $table->string('nama_pelanggan');
+            $table->foreignId('ref_id_electricityRate', 5)->references('id_tarif')->on('electricity_rates')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -22,6 +27,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropForeign('ref_id_electricityRate')->foreign('ref_id_electricityRate')->references('id_tarif')->on('electricity_rates');
         Schema::dropIfExists('clients');
     }
 };
