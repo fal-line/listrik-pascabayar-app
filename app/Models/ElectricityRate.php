@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ElectricityRate extends Model
 {
-    //
+    protected $fillable = [
+        'daya',
+        'tarif',
+    ];
 }
