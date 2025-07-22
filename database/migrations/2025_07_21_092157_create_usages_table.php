@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('usages', function (Blueprint $table) {
             $table->id('id_penggunaan');
-            $table->foreignId('ref_id_pelanggan', 5)->references('id_pelanggan')->on('clients')->onDelete('cascade');
+            $table->foreignId('ref_id_pelanggan', 5)->references('id')->on('clients')->onDelete('cascade');
             $table->enum('bulan', ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember', ]);
             $table->year('tahun');
             $table->integer('meter_awal');
@@ -27,7 +27,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropForeign('ref_id_pelanggan')->foreign('ref_id_pelanggan')->references('id_pelanggan')->on('clients');
+        Schema::dropForeign('ref_id_pelanggan')->foreign('ref_id_pelanggan')->references('id')->on('clients');
         Schema::dropIfExists('usages');
     }
 };

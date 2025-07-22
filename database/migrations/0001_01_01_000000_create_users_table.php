@@ -14,9 +14,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id('id_user');
+            $table->id();
             $table->string('name', 80);
-            $table->string('username', 80)->unique();
+            $table->string('email', 80)->unique();
             $table->string('password');
             $table->foreignId('ref_id_role', 5)->references('id_role')->on('roles')->onDelete('cascade');
             // $table->string('email', 80)->unique();
@@ -42,7 +42,7 @@ return new class extends Migration
 
         User::create([
             'name' => 'ROOT',
-            'username' => 'admin-service',
+            'email' => 'admin@service',
             'password' => Hash::make('1234'),
             'ref_id_role' => 1,
         ]);
