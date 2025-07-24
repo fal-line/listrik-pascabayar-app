@@ -21,6 +21,10 @@ return new class extends Migration
         Role::create([
             'role_name' => 'SuperAdmin'
         ]);
+
+        Role::create([
+            'role_name' => 'Client'
+        ]);
     }
 
     /**
