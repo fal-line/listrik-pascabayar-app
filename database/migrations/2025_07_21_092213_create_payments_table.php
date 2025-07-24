@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id('id_bayar');
-            $table->foreignId('ref_id_tagihan', 5)->references('id_tagihan')->on('invoices')->onDelete('cascade');
+            $table->foreignId('ref_id_tagihan')->references('id_tagihan')->on('invoices')->onDelete('cascade');
             $table->enum('bulan_bayar', ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember', ]);
             $table->integer('biaya_admin');
             $table->integer('total_bayara');
-            $table->foreignId('ref_admin', 5)->references('id_user')->on('users')->onDelete('cascade');
+            $table->foreignId('ref_admin')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,8 +27,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropForeign('ref_id_tagihan')->foreign('ref_id_tagihan', 5)->references('id_tagihan')->on('invoices');
-        Schema::dropForeign('ref_admin')->foreign('ref_admin', 5)->references('id_user')->on('users');
+        Schema::dropForeign('ref_id_tagihan')->foreign('ref_id_tagihan')->references('id_tagihan')->on('invoices');
+        Schema::dropForeign('ref_admin')->foreign('ref_admin')->references('id')->on('users');
         
         Schema::dropIfExists('payments');
     }
