@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Client;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -20,6 +22,14 @@ return new class extends Migration
             $table->foreignId('ref_id_electricityRate', 5)->references('id_tarif')->on('electricity_rates')->onDelete('cascade');
             $table->timestamps();
         });
+
+        Client::create([
+            'email' => 'client@test',
+            'password' => Hash::make('1234'),
+            'nomor_kwh' => "199486843",
+            'nama_pelanggan' => "Irwan Suhandi",
+            'ref_id_electricityRate' => 1,
+        ]);
     }
 
     /**
