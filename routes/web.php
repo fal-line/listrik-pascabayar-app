@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +20,15 @@ Route::get('/home', function () {
     } elseif ($user->ref_id_role === 2) {
         return view('homeClient');
     }
-
     abort(403); 
     // Forbidden if role is not recognized
+})->middleware('auth');
+
+Route::controller(ClientController::class)->group(function () {
+
+
+    Route::get('/clientData', 'index');
+    // Route::post('/orders', 'store');
+
+
 })->middleware('auth');
