@@ -10,4 +10,6 @@ class ElectricityRate extends Model
         'daya',
         'tarif',
     ];
+
+    protected $primaryKey = 'id_tarif';
 }

@@ -44,7 +44,7 @@
                         <div class="card-body">
                             <h1 class="card-title">727</h1>
                             <p class="card-text">Jumlah tagihan aktif milik pelanggan yang belum lunas.</p>
-                            <a href="#" class="btn btn-outline-primary">Kelola</a>
+                            <a href="/invoiceData" class="btn btn-outline-primary">Kelola</a>
                         </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                         <div class="card-body">
                             <!-- <h1 class="card-title">727</h1> -->
                             <p class="card-text">Kelola tarif dasar listrik.</p>
-                            <a href="#" class="btn btn-outline-primary">Kelola</a>
+                            <a href="/tarifData" class="btn btn-outline-primary">Kelola</a>
                         </div>
                         </div>
                     </div>

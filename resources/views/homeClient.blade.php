@@ -16,6 +16,7 @@
 
                     {{ __('You are logged in!') }}
                     <strong>{{Auth::user()->client->nama_pelanggan}}</strong>
+
                 </div>
             </div>
         </div>

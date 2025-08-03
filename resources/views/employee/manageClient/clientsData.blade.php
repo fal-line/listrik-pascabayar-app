@@ -7,11 +7,15 @@
 
 
             
-            <div class="mt-4">
+            <div class="mb-5">
                         <div class="card-header h4 py-3"><strong>Data Pelanggan</strong></div>
-                        <button type="button" class="btn btn-outline-primary mb-4">
-                            Daftar Pelanggan Baru
-                        </button>
+                        <a href="/clientData/baru" class="text-white align-middle">
+                            <button type="button" class="btn btn-outline-primary ">
+                                Daftar Pelanggan Baru
+                            </button>
+                        </a>
+            
+            </div>
             <table class="table ">
                 <thead>
                     <tr>
@@ -30,15 +34,17 @@
                             <td class="align-middle">{{$pelanggan->nomor_kwh}}</td>
                             <td class="align-middle">{{$pelanggan->daya}}</td>
                             <td class="align-middle">
-                                <button type="button" class="btn btn-outline-primary ">
-                                    Detail
-                                </button>
+                                <a href="/clientData/{{ $pelanggan->user_id }}" class="text-white align-middle">
+                                    <button type="button" class="btn btn-outline-primary ">
+                                        Detail
+                                    </button>
+                                </a>
+                                
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            </div>
         </div>
     </div>
 </div>

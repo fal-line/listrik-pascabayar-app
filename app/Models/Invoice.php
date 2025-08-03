@@ -14,4 +14,6 @@ class Invoice extends Model
         'jumlah_meter',
         'status',
     ];
+
+    protected $primaryKey = 'id_tagihan';
 }

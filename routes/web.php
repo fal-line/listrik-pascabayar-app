@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ElectricityRateController;
+use App\Http\Controllers\InvoiceController;
+use App\Models\Invoice;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,9 +29,30 @@ Route::get('/home', function () {
 
 Route::controller(ClientController::class)->group(function () {
 
-
-    Route::get('/clientData', 'index');
+    Route::get('/clientData', 'index')->name('clientIndex');
+    Route::get('/clientData/baru', 'create');
+    Route::post('/clientData/baru', 'insert');
+    Route::get('/clientData/{id}', 'detail');
+    Route::delete('/clientData/delete/{id}', 'destroy');
     // Route::post('/orders', 'store');
 
+})->middleware('auth');
+
+Route::controller(ElectricityRateController::class)->group(function () {
+
+    Route::get('/tarifData', 'index')->name('tarifIndex');
+    Route::post('/tarifData/baru', 'insert');
+    Route::delete('/tarifData/delete/{id}', 'destroy');
+
+})->middleware('auth');
+
+Route::controller(InvoiceController::class)->group(function () {
+
+    Route::get('/invoiceData', 'index')->name('invoiceIndex');
+    Route::get('/invoiceData/generate', 'checkUsage');
+    // Route::post('/invoiceData/baru', 'insert');
+    // Route::get('/invoiceData/{id}', 'detail');
+    // Route::delete('/invoiceData/delete/{id}', 'destroy');
+    // Route::post('/orders', 'store');
 
 })->middleware('auth');
