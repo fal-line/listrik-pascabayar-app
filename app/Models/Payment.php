@@ -13,4 +13,6 @@ class Payment extends Model
         'total_bayar',
         'ref_admin',
     ];
+
+    protected $primaryKey = 'id_bayar';
 }

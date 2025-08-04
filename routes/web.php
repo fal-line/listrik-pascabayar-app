@@ -3,7 +3,9 @@
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ElectricityRateController;
 use App\Http\Controllers\InvoiceController;
-use App\Models\Invoice;
+use App\Http\Controllers\PaymentController;
+// use App\Models\Invoice;
+// use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -54,5 +56,11 @@ Route::controller(InvoiceController::class)->group(function () {
     // Route::get('/invoiceData/{id}', 'detail');
     // Route::delete('/invoiceData/delete/{id}', 'destroy');
     // Route::post('/orders', 'store');
+
+})->middleware('auth');
+
+Route::controller(PaymentController::class)->group(function () {
+
+    Route::get('/paymentsData', 'index')->name('paymentIndex');
 
 })->middleware('auth');

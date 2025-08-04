@@ -55,7 +55,7 @@
                         <div class="card-body">
                             <h1 class="card-title">727</h1>
                             <p class="card-text">Jumlah pembayaran yang dilakukan pelanggan, menunggu konfirmasi.</p>
-                            <a href="#" class="btn btn-outline-primary">Kelola</a>
+                            <a href="/paymentsData" class="btn btn-outline-primary">Kelola</a>
                         </div>
                         </div>
                     </div>
